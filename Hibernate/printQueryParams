@@ -1,0 +1,9 @@
+To print query parameters which are set to query
+
+java.util.Set<Parameter<?>> params = query.getParameters();
+LOGGER.info("####### params size : " + params.size());
+for (Parameter<?> p : params) {
+    String paramName = p.getName();
+    LOGGER.info("### Param name in query : " + paramName + " - ");
+    LOGGER.info("### Param value in query :" +query.getParameterValue(paramName));
+}
