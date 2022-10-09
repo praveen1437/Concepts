@@ -1,0 +1,20 @@
+To print hibernate logs in to your log file, make sure to add foloowing dependecy to your project
+<dependency>
+    <groupId>org.jboss.logging</groupId>
+    <artifactId>jboss-logging</artifactId>
+    <version>3.3.2.Final</version>
+</dependency>
+
+in your log configuration file
+
+<Logger name="org.hibernate" level="debug">
+<Logger name="org.hibernate.SQL" level="debug">
+<Logger name="org.hibernate.type" level="trace">
+
+trace -- is used to display the parameters which are being passed to your query and what is the data fecthing from db. 
+Without trace you can only know the query but not the parameter values
+
+By enabling these your request processting takes more time. And you will get more logs, 
+so make sure to increase your log file size so that your logs won't be replaced with new logs.
+
+Note : Use this when required and not to enable in production
