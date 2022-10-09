@@ -1,0 +1,8 @@
+String s = query.unwrap(org.hibernate.Query.class).getQueryString();
+String hqlQueryString = query.unwrap(org.hibernate.Query.class).getQueryString();
+ASTQueryTranslatorFactory queryTranslatorFactory = new ASTQueryTranslatorFactory();
+SessionImplementor hibernateSession = entityManager.unwrap(SessionImplementor.class);
+QueryTranslator queryTranslator = queryTranslatorFactory.createQueryTranslator("", hqlQueryString, java.util.Collections.EMPTY_MAP, hibernateSession.getFactory(),null);
+queryTranslator.compile(java.util.Collections.EMPTY_MAP, false);
+String sqlQueryString = queryTranslator.getSQLString();
+sout("query" + sqlQueryString); 
